@@ -24,13 +24,13 @@ ${PROJECT_INCLUDE_DIR}/example_project.hh)
 set(PROJECT_SOURCE 
 ${PROJECT_SOURCE_DIR}/main.cpp)
 
-
-
 add_executable(ExampleProject ${PROJECT_SOURCE} ${PROJECT_HEADER})
 
 target_include_directories(ExampleProject 
     PUBLIC 
-    ${CMAKE_CURRENT_SOURCE_DIR}/include)
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    
+    )
 
 target_link_libraries(ExampleProject PRIVATE GTest::gtest_main spdlog::spdlog)
 

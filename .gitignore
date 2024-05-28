@@ -35,6 +35,10 @@
 #IDE/TextEditor Files
 .vscode
 build/
+bin/
+logs/
 
 #vcpkg
 vcpkg_installed
+
+

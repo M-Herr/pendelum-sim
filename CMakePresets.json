@@ -2,9 +2,9 @@
     "version": 2,
     "configurePresets": [
         {
-            "name": "Example",
-            "displayName": "Configure preset using toolchain file",
-            "description": "Sets Ninja generator, build and install directory",
+            "name": "debug",
+            "displayName": "Debug Configuration",
+            "description": "Sets Unix Makefiles generator and some important CMAKE variables.",
             "generator": "Unix Makefiles",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
@@ -13,5 +13,17 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}"
             }
         }
-    ]
+    ],
+    "buildPresets": [
+        {
+            "name": "build-base",
+            "hidden": true,
+            "configurePreset": "debug"
+        },
+        {
+            "name": "debug",
+            "displayName": "Build Debug",
+            "inherits": "build-base"
+        }
+      ]
 }

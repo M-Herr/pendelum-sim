@@ -7,6 +7,8 @@ project(
 
 
 find_package(GTest REQUIRED)
+find_package(spdlog REQUIRED)
+
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -30,10 +32,10 @@ target_include_directories(ExampleProject
     PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_link_libraries(ExampleProject PRIVATE GTest::gtest_main)
+target_link_libraries(ExampleProject PRIVATE GTest::gtest_main spdlog::spdlog)
 
 #set_target_properties(ExampleProject PROPERTIES PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/example_project.hh)
 
-install(TARGETS ExampleProject
-PUBLIC_HEADER DESTINATION include
-)
+install(TARGETS ExampleProject DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/bin"
+        RUNTIME DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/bin"
+        LIBRARY DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/lib")

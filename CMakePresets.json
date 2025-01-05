@@ -5,24 +5,46 @@
             "name": "debug",
             "displayName": "Debug Configuration",
             "description": "Sets Unix Makefiles generator and some important CMAKE variables.",
-            "generator": "Unix Makefiles",
+            "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release Configuration",
+            "description": "Sets Unix Makefiles generator and some important CMAKE variables.",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
             }
         }
     ],
     "buildPresets": [
         {
-            "name": "build-base",
+            "name": "debug-base",
             "hidden": true,
             "configurePreset": "debug"
         },
         {
             "name": "debug",
             "displayName": "Build Debug",
-            "inherits": "build-base"
+            "inherits": "debug-base"
+        },
+        {
+            "name": "release-base",
+            "hidden": true,
+            "configurePreset": "release"
+        },
+        {
+            "name": "release",
+            "displayName": "Build Release",
+            "inherits": "release-base"
         }
+
       ]
 }
